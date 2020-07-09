@@ -10,12 +10,12 @@ class EmailSender:
     def __init__(self):
         self.fromaddr = LG["email_sender"]
         self.toaddr = LG["email_recipient"]
-    def send(self, new_entry):
+    def send(self, link):
         msg = MIMEMultipart()
         msg['From'] = self.fromaddr
         msg['To'] = self.toaddr
-        msg['Subject'] = "New entry in Studydrive"
-        body = "There is a new entry in studydrive, check the files to see where the entry is" + new_entry
+        msg['Subject'] = "New entry in WG-gesucht"
+        body = "There is a new entry in WG-gesucht, check the files to see where the entry is" + link
         msg.attach(MIMEText(body, 'plain'))
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
