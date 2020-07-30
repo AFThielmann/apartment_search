@@ -14,15 +14,18 @@ with open("pkg/list.txt", "rb") as fp:
     old_list = pickle.load(fp)
 
 new_list = ws.find_links()
+new_list = ws.find_links_ebay()
 
-with open("pkg/list.txt", "wb") as fp:
-    pickle.dump(new_list, fp)
 
-if new_list[0] != old_list[0]:
+
+
+if new_list != old_list:
     result = set(new_list) - set(old_list)
     print('there is new content')
 
     es.send(str(result))
+    with open("pkg/list.txt", "wb") as fp:
+        pickle.dump(new_list, fp)
 
 else:
     print("nothing new")
