@@ -15,8 +15,6 @@ with open("pkg/list.txt", "rb") as fp:
 
 new_list = ws.find_links()
 new_list = ws.find_links_ebay()
-new_list = ws.find_links_immo()
-
 
 
 
